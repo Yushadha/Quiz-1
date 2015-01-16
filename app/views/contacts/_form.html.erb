@@ -1,0 +1,25 @@
+<% if @contact.errors.any? %>
+	<ul>
+		<% @contact.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= form_for @contact do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<br>
+	<%= f.label :email %>
+	<%= f.email_field :email %>
+	<br>
+	<p>for Sales enter 1, Marketing enter 2, Technical enter 3, for error enter other...</p> 
+	<%= f.label :department %>
+	<%= f.number_field :department %>
+	<br>
+	<%= f.label :message %>
+	<%= f.text_area :message %>
+	<br>
+	<%= f.submit %>
+	<%= f.button "Reset", type: :reset %>
+<% end %>

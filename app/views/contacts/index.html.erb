@@ -1,0 +1,22 @@
+<h1>Welcome to index!</h1>
+
+<% @contact.each do |contact| %>
+		<p>Name: <%= contact.name %></p>
+		<p>Email: <%= contact.email %></p>
+		<p>Department: 
+			<% if contact.department == 1 %>
+				<%="Sales" %>
+				<% elsif contact.department == 2 %>
+				<%="Marketing" %>
+				<% elsif contact.department == 3 %>
+				<%="Technical" %>
+				<% else %>
+				<%= "The user entered the wrong department. Totally their fault..." %>
+				<% end %>
+		</p>
+		<p>Message: <%= contact.message %></p>
+		<p><%= link_to "Edit", edit_contact_path(contact) %>
+		<%= link_to  "Delete", contact_path(contact), method: :delete, data: {confirm: "Are you sure"} %>
+		</p>
+		<hr>
+	<% end %>
